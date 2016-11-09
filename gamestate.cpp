@@ -1,6 +1,18 @@
 #include "gamestate.h"
 #include <iostream>
 
+Board::Board()
+{
+	_gamestate[0][0]	= ' ';
+	_gamestate[0][1]	= ' ';
+	_gamestate[0][2]	= ' ';
+	_gamestate[1][0]	= ' ';
+	_gamestate[1][1]	= ' ';
+	_gamestate[1][2]	= ' ';
+	_gamestate[2][0]	= ' ';
+	_gamestate[2][1]	= ' ';
+	_gamestate[2][2]	= ' ';
+}
 Board::Board(char gs[3][3])
 {
 	_gamestate[0][0]	= gs[0][0];
@@ -16,15 +28,20 @@ Board::Board(char gs[3][3])
 
 Board::Board(const Board &board)
 {
-	_gamestate[0][0]	= board._gamestate[0][0];
-	_gamestate[0][1]	= board._gamestate[0][1];
-	_gamestate[0][2]	= board._gamestate[0][2];
-	_gamestate[1][0]	= board._gamestate[1][0];
-	_gamestate[1][1]	= board._gamestate[1][1];
-	_gamestate[1][2]	= board._gamestate[1][2];
-	_gamestate[2][0]	= board._gamestate[2][0];
-	_gamestate[2][1]	= board._gamestate[2][1];
-	_gamestate[2][2]	= board._gamestate[2][2];
+	*this = board;
+}
+
+Board& Board::operator=(const Board &rhs)
+{
+	_gamestate[0][0]	= rhs._gamestate[0][0];
+	_gamestate[0][1]	= rhs._gamestate[0][1];
+	_gamestate[0][2]	= rhs._gamestate[0][2];
+	_gamestate[1][0]	= rhs._gamestate[1][0];
+	_gamestate[1][1]	= rhs._gamestate[1][1];
+	_gamestate[1][2]	= rhs._gamestate[1][2];
+	_gamestate[2][0]	= rhs._gamestate[2][0];
+	_gamestate[2][1]	= rhs._gamestate[2][1];
+	_gamestate[2][2]	= rhs._gamestate[2][2];
 }
 
 Board& Board::Rotate()
@@ -89,6 +106,26 @@ Board& Board::Flip(char** state)
 	state[1][2]	= x;
 
 	return *this;
+}
+
+int Board::EmptySpaces() const
+{
+	int count = 0;
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 3; j++)
+			if (_gamestate[i][j] == ' ') count++;
+
+	return count;
+}
+
+void Board::PlayMove(int row, int col, char move)
+{
+	_gamestate[row][col] = move;
+}
+
+char Board::GetMove(int row, int col) const
+{
+	return _gamestate[row][col];
 }
 
 std::ostream& operator<< (std::ostream &out, const Board &obj)

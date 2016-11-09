@@ -7,4 +7,4 @@ gamestate.o : gamestate.cpp gamestate.h
 clean : 
 	rm *.o
 realclean :
-	rm *.o tictactoe
+	rm *.o tictactoe results
