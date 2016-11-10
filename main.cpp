@@ -21,12 +21,12 @@ bool InArray(const std::vector<Board>& gamearray, const Board& game)
 	{
 		if (gm == gamearray[i]) return true;
 		if (gm.Flip() == gamearray[i]) return true;	
-		for (int j = 0; j < 7; j++)
+		for (int j = 0; j < 3; j++)
 		{
 			if (gm.Rotate() == gamearray[i]) return true;
 		}
 		if (gm.Flip() == gamearray[i]) return true;	
-		for (int j = 0; j < 7; j++)
+		for (int j = 0; j < 3; j++)
 		{
 			if (gm.Rotate() == gamearray[i]) return true;
 		}
