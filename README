@@ -1,0 +1,7 @@
+This is a sandbox project for me to learn more about genetic programming techniques.  The goal is to use these techniques and finite state machines to produce strategies that are optimal for playing tic tac toe.  The code itself should find these strategies, rather than me programming the decision logic.
+
+Step 1 has been to determine the entire number of possible game states that can occur, eliminating positions that are transpositions of each other and also eliminating positions that are impossible to reach since one side or the other will have won before they can be reached.
+
+That set of game states is the "vocabulary" that a FSM would have to respond to.  I am still not sure how to structure the FSM efficiently.  Ideally, it should not have to consider every possible gamestate at each node in the FSM.  But this is part of the learning I am doing here.
+
+The code is in c++, as this is what I know best and is also fast.  I am doing this work on a Raspberry pi3.
