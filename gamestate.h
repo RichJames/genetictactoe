@@ -27,6 +27,7 @@ class Board {
 		int EmptySpaces() const;
 		void PlayMove(int row, int col, char move);
 		char GetMove(int row, int col) const;
+		bool GameWon() const;
 
 		friend std::ostream& operator<<(std::ostream &out, const Board &obj);
 		friend bool operator== (const Board &b1, const Board &b2);

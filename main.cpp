@@ -67,11 +67,13 @@ int main()
 {
 /*
 	char game1[3][3] = {
-		 	    {' ', ' ', ' '},
-			    {' ', ' ', ' '},
-			    {' ', ' ', ' '},
+		 	    {'X', 'Y', 'X'},
+			    {'Y', 'X', 'X'},
+			    {' ', 'Y', 'Y'},
 		           };
+
 */
+
 	Board initialGame;
 	// vector of all possible game states
 	std::vector<Board> games(1, initialGame);

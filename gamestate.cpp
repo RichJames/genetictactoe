@@ -118,9 +118,25 @@ int Board::EmptySpaces() const
 	return count;
 }
 
+bool Board::GameWon() const
+{
+	if (_gamestate[0][0] != ' ' && _gamestate[0][0] == _gamestate[0][1] && _gamestate[0][1] == _gamestate[0][2]) return true;
+	if (_gamestate[1][0] != ' ' && _gamestate[1][0] == _gamestate[1][1] && _gamestate[1][1] == _gamestate[1][2]) return true;
+	if (_gamestate[2][0] != ' ' && _gamestate[2][0] == _gamestate[2][1] && _gamestate[2][1] == _gamestate[2][2]) return true;
+
+	if (_gamestate[0][0] != ' ' && _gamestate[0][0] == _gamestate[1][0] && _gamestate[1][0] == _gamestate[2][0]) return true;
+	if (_gamestate[0][1] != ' ' && _gamestate[0][1] == _gamestate[1][1] && _gamestate[1][1] == _gamestate[2][1]) return true;
+	if (_gamestate[0][2] != ' ' && _gamestate[0][2] == _gamestate[1][2] && _gamestate[1][2] == _gamestate[2][2]) return true;
+
+	if (_gamestate[0][0] != ' ' && _gamestate[0][0] == _gamestate[1][1] && _gamestate[1][1] == _gamestate[2][2]) return true;
+	if (_gamestate[0][2] != ' ' && _gamestate[0][2] == _gamestate[1][1] && _gamestate[1][1] == _gamestate[2][0]) return true;
+
+	return false;
+}
+
 void Board::PlayMove(int row, int col, char move)
 {
-	_gamestate[row][col] = move;
+	if (! this->GameWon()) _gamestate[row][col] = move;
 }
 
 char Board::GetMove(int row, int col) const
