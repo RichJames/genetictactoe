@@ -88,7 +88,7 @@ int main()
 	for (int i = 0; i < games.size(); i++)
 	{
 		cout << "game[" << i << "] =" << endl;
-		cout << games[i] << endl << endl;
+		cout << games[i] << endl; 
 	}
 
 	return 0;

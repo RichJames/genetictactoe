@@ -47,13 +47,15 @@ Board& Board::operator=(const Board &rhs)
 Board& Board::Rotate()
 {
 	char x			= _gamestate[0][0];
-	_gamestate[0][0]	= _gamestate[0][1];
-	_gamestate[0][1]	= _gamestate[0][2];
-	_gamestate[0][2]	= _gamestate[1][2];
-	_gamestate[1][2]	= _gamestate[2][2];
-	_gamestate[2][2]	= _gamestate[2][1];
-	_gamestate[2][1]	= _gamestate[2][0];
-	_gamestate[2][0]	= _gamestate[1][0];
+	_gamestate[0][0]	= _gamestate[0][2];
+	_gamestate[0][2]	= _gamestate[2][2];
+	_gamestate[2][2]	= _gamestate[2][0];
+	_gamestate[2][0]	= x;
+
+	x			= _gamestate[0][1];
+	_gamestate[0][1]	= _gamestate[1][2];
+	_gamestate[1][2]	= _gamestate[2][1];
+	_gamestate[2][1]	= _gamestate[1][0];
 	_gamestate[1][0]	= x;
 
 	return *this;
@@ -62,13 +64,15 @@ Board& Board::Rotate()
 Board& Board::Rotate(char** state)
 {
 	char x		= state[0][0];
-	state[0][0]	= state[0][1];
-	state[0][1]	= state[0][2];
-	state[0][2]	= state[1][2];
-	state[1][2]	= state[2][2];
-	state[2][2]	= state[2][1];
-	state[2][1]	= state[2][0];
-	state[2][0]	= state[1][0];
+	state[0][0]	= state[0][2];
+	state[0][2]	= state[2][2];
+	state[2][2]	= state[2][0];
+	state[2][0]	= x;
+
+	x		= state[0][1];
+	state[0][1]	= state[1][2];
+	state[1][2]	= state[2][1];
+	state[2][1]	= state[1][0];
 	state[1][0]	= x;
 
 	return *this;
